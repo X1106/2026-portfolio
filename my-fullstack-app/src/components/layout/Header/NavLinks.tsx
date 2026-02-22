@@ -3,7 +3,7 @@
 import { Box, Button } from "@mui/material";
 import Link from "next/link";
 
-export default function NavLinks({ pages }) {
+export default function NavLinks({ pages }: { pages: any[] }) {
   return (
     <Box>
       {pages.map((page) => (
