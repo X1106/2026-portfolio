@@ -1,13 +1,16 @@
-// src/lib/microcms/client.ts
 import { createClient } from "microcms-js-sdk";
 
-const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
-const apiKey = process.env.MICROCMS_API_KEY;
+// 環境変数を取得（なければ "dummy" を入れる）
+const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN || "dummy";
+const apiKey = process.env.MICROCMS_API_KEY || "dummy";
 
-if (!serviceDomain) throw new Error("MICROCMS_SERVICE_DOMAIN is missing");
-if (!apiKey) throw new Error("MICROCMS_API_KEY is missing");
+// 💡 ポイント: throw new Error の行を削除、またはコメントアウトしました。
+// これにより、ビルド時に変数がなくてもプロセスが止まらなくなります。
 
 export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN || "dummy",
-  apiKey: process.env.MICROCMS_API_KEY || "dummy",
+  serviceDomain: serviceDomain,
+  apiKey: apiKey,
 });
+
+// 前のファイルでこの名前を使っていた場合のために、別名でも書き出しておくと安全です
+export const microcmsClient = client;
