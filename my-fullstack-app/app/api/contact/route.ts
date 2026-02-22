@@ -4,7 +4,7 @@ import { Resend } from "resend";
 import { z } from "zod";
 
 // 送信（Resend）
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = new Resend(process.env.RESEND_API_KEY || "re_dummy");
 
 const ContactSchema = z.object({
   category: z.string().min(1),
