@@ -136,7 +136,7 @@ export const createIconPixelSketch =
     p.mousePressed = () => nextIcon();
 
     // ✅ 親サイズが変わったら追従（呼び出し側のResizeObserverで呼ぶ）
-    p._fitToParent = () => {
+    (p as any)._fitToParent = () => {
       const { w, h } = opts.getSize();
       p.resizeCanvas(w, h);
     };
