@@ -43,8 +43,8 @@ export async function saveDraftAction(
   if (!parsed.success) {
     return { ok: false, fieldErrors: parsed.error.flatten().fieldErrors };
   }
-
-  cookies().set({
+  const cookieStore = await cookies();
+  cookieStore.set({
     name: COOKIE_KEY,
     value: encode(parsed.data),
     httpOnly: true,
