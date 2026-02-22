@@ -45,7 +45,6 @@ function getCategoryThumb(category?: string) {
   }
   return null;
 }
-
 export default function NewsCard({ item }: { item: Item }) {
   if (!item?.slug) return null;
 
@@ -53,54 +52,59 @@ export default function NewsCard({ item }: { item: Item }) {
 
   return (
     <Card variant="outlined">
-      <CardActionArea component={Link} href={`/news/${item.slug}`}>
-        {/* ✅ サムネイル */}
-        {thumb && (
-          <Box
-            sx={{
-              width: "100%",
-              height: 160,
-              bgcolor: "#f4f4f4",
-              display: "grid",
-              placeItems: "center",
-              borderBottom: "1px solid rgba(0,0,0,0.08)",
-            }}
-          >
+      {/* 修正ポイント：CardActionAreaの外側をLinkで囲み、component={Link}を削除します */}
+      <Link
+        href={`/news/${item.slug}`}
+        style={{ textDecoration: "none", color: "inherit" }}
+      >
+        <CardActionArea>
+          {/* ✅ サムネイル部分 */}
+          {thumb && (
             <Box
-              component="img"
-              src={thumb.src}
-              alt={thumb.label}
-              sx={{ width: 96, height: 96 }}
-            />
-          </Box>
-        )}
-
-        <CardContent>
-          <Stack
-            direction="row"
-            spacing={1}
-            alignItems="center"
-            sx={{ mb: 0.5, flexWrap: "wrap" }}
-          >
-            <Typography variant="subtitle2" sx={{ opacity: 0.7 }}>
-              {formatDateJa(item.publishedAt)}
-            </Typography>
-
-            {/* ✅ Chipの表示名も thumb があれば揃える */}
-            <Chip size="small" label={thumb?.label ?? item.category ?? ""} />
-          </Stack>
-
-          <Typography variant="h6" sx={{ mb: 1 }}>
-            {item.title}
-          </Typography>
-
-          {!!item.excerpt && (
-            <Typography variant="body2" sx={{ opacity: 0.8 }}>
-              {item.excerpt}
-            </Typography>
+              sx={{
+                width: "100%",
+                height: 160,
+                bgcolor: "#f4f4f4",
+                display: "grid",
+                placeItems: "center",
+                borderBottom: "1px solid rgba(0,0,0,0.08)",
+              }}
+            >
+              <Box
+                component="img"
+                src={thumb.src}
+                alt={thumb.label}
+                sx={{ width: 96, height: 96 }}
+              />
+            </Box>
           )}
-        </CardContent>
-      </CardActionArea>
+
+          <CardContent>
+            {/* ...（中身は変更なし）... */}
+            <Stack
+              direction="row"
+              spacing={1}
+              alignItems="center"
+              sx={{ mb: 0.5, flexWrap: "wrap" }}
+            >
+              <Typography variant="subtitle2" sx={{ opacity: 0.7 }}>
+                {formatDateJa(item.publishedAt)}
+              </Typography>
+              <Chip size="small" label={thumb?.label ?? item.category ?? ""} />
+            </Stack>
+
+            <Typography variant="h6" sx={{ mb: 1 }}>
+              {item.title}
+            </Typography>
+
+            {!!item.excerpt && (
+              <Typography variant="body2" sx={{ opacity: 0.8 }}>
+                {item.excerpt}
+              </Typography>
+            )}
+          </CardContent>
+        </CardActionArea>
+      </Link>
     </Card>
   );
 }
