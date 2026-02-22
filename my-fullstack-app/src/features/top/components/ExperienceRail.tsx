@@ -80,7 +80,7 @@ export default function ExperienceRail() {
       >
         <OverlapPanels
           cw={cw}
-          reduceMotion={reduceMotion}
+          reduceMotion={reduceMotion ?? false}
           scrollYProgress={scrollYProgress}
         />
       </Box>
