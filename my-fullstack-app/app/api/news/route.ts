@@ -147,7 +147,7 @@ export async function GET(req: Request) {
 
       // ここでは “categoryName” をそのまま表示用として返す（挙動を壊さない）
       const filtered =
-        category === "all"
+        (category as string) === "all"
           ? normalized
           : normalized.filter(
               (x) =>
