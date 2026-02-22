@@ -1,6 +1,6 @@
 // app/api/news/route.ts
 import { NextResponse } from "next/server";
-import { microcmsClient } from "@/lib/microcms/client";
+import { client as microcmsClient } from "@/lib/microcms/client";
 import { makeExcerptFromHtml } from "@/features/news/utils/excerpt";
 
 type CategoryKey = "all" | "notice" | "blog";

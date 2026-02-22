@@ -1,6 +1,6 @@
 // app/(site)/news/[slug]/page.tsx
 import { notFound } from "next/navigation";
-import { microcmsClient } from "@/lib/microcms/client";
+import { client as microcmsClient } from "@/lib/microcms/client";
 import NewsArticle from "../_components/NewsArticle";
 import { Box, Container } from "@mui/material";
 
