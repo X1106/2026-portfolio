@@ -72,7 +72,7 @@ export default function LoginPage() {
               <Typography
                 sx={{
                   ...(isPc
-                    ? typographyPresets.auth.pc.body1
+                    ? typographyPresets.auth.pc.body1_1
                     : typographyPresets.auth.sp.body1),
                   mb: 0,
                 }}
@@ -84,7 +84,7 @@ export default function LoginPage() {
                 <Typography
                   sx={{
                     ...(isPc
-                      ? typographyPresets.auth.pc.body1
+                      ? typographyPresets.auth.pc.body1_1
                       : typographyPresets.auth.sp.body1),
                     mb: 1,
                   }}
@@ -94,7 +94,7 @@ export default function LoginPage() {
                 <Typography
                   sx={{
                     ...(isPc
-                      ? typographyPresets.auth.pc.body1
+                      ? typographyPresets.auth.pc.body1_1
                       : typographyPresets.auth.sp.body1),
                     mb: 0,
                   }}
