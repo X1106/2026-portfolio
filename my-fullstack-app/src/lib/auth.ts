@@ -4,7 +4,13 @@ import Credentials from "next-auth/providers/credentials";
 import db from "@/lib/db";
 
 export const { auth, handlers } = NextAuth({
-  debug: true, // ✅ 追加（重要）
+  debug: true,
+
+  // ✅ 追加：middleware と同じ秘密鍵で JWT を作る/読む
+  secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
+
+  // ✅ 追加：Vercel Preview の可変ホストを信頼（これが効くことが多い）
+  trustHost: true,
 
   logger: {
     error(code, meta) {
@@ -44,7 +50,6 @@ export const { auth, handlers } = NextAuth({
 
           console.log("[authorize] username:", username);
 
-          // サーバー側バリデーション
           if (username.length < 3 || password.length < 4) {
             console.log("[authorize] validation failed");
             return null;
@@ -78,7 +83,7 @@ export const { auth, handlers } = NextAuth({
           };
         } catch (err) {
           console.error("[authorize][CRASH]", err);
-          throw err; // ← これが server configuration error の正体を出す
+          throw err;
         }
       },
     }),
@@ -87,7 +92,7 @@ export const { auth, handlers } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        (token as any).id = (user as any).id; // ✅ token.id に保存
+        (token as any).id = (user as any).id;
         token.name = (user as any).name;
         (token as any).remember = (user as any).remember;
       }
@@ -96,7 +101,7 @@ export const { auth, handlers } = NextAuth({
 
     async session({ session, token }) {
       session.user = session.user ?? ({} as any);
-      (session.user as any).id = (token as any).id; // ✅ token.id を参照
+      (session.user as any).id = (token as any).id;
       session.user.name = (token.name as string) ?? session.user.name;
 
       (session as any).remember = (token as any).remember;
