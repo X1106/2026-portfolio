@@ -87,13 +87,19 @@ export const { auth, handlers } = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.remember = (user as any).remember;
+        (token as any).id = (user as any).id; // ✅ token.id に保存
+        token.name = (user as any).name;
+        (token as any).remember = (user as any).remember;
       }
       return token;
     },
 
     async session({ session, token }) {
-      (session as any).remember = token.remember;
+      session.user = session.user ?? ({} as any);
+      (session.user as any).id = (token as any).id; // ✅ token.id を参照
+      session.user.name = (token.name as string) ?? session.user.name;
+
+      (session as any).remember = (token as any).remember;
       return session;
     },
   },
