@@ -1,4 +1,5 @@
 // app/(site)/news/_components/NewsCard.tsx
+"use client";
 import Link from "next/link";
 import {
   Card,
