@@ -12,14 +12,16 @@ export default function NotFound() {
           URLが間違っているか、記事が削除された可能性があります。
         </Typography>
 
-        <Button
-          component={Link}
-          href="/news"
-          variant="contained"
-          sx={{ width: "fit-content" }}
-        >
-          一覧に戻る
-        </Button>
+        {/* ✅ 修正ポイント: component={Link} を削除し、LinkでButtonを囲む */}
+        <Link href="/news" passHref style={{ textDecoration: "none" }}>
+          <Button
+            variant="contained"
+            component="span" // HTML構造を正しく保つために span に変更
+            sx={{ width: "fit-content" }}
+          >
+            一覧に戻る
+          </Button>
+        </Link>
       </Stack>
     </Container>
   );

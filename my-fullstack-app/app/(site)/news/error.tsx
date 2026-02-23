@@ -26,9 +26,13 @@ export default function Error({
           <Button variant="contained" onClick={reset}>
             もう一度試す
           </Button>
-          <Button component={Link} href="/news" variant="outlined">
-            一覧へ
-          </Button>
+
+          {/* ✅ 修正ポイント: component={Link} を使わず、LinkでButtonを囲む */}
+          <Link href="/news" passHref style={{ textDecoration: "none" }}>
+            <Button variant="outlined" component="span">
+              一覧へ
+            </Button>
+          </Link>
         </Stack>
       </Stack>
     </Container>
