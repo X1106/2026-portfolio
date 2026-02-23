@@ -1,8 +1,23 @@
 // src/lib/auth.ts
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
+import db from "@/lib/db";
 
 export const { auth, handlers } = NextAuth({
+  debug: true, // ✅ 追加（重要）
+
+  logger: {
+    error(code, meta) {
+      console.error("[nextauth][error]", code, meta);
+    },
+    warn(code) {
+      console.warn("[nextauth][warn]", code);
+    },
+    debug(code, meta) {
+      console.log("[nextauth][debug]", code, meta);
+    },
+  },
+
   session: {
     strategy: "jwt",
   },
@@ -10,33 +25,61 @@ export const { auth, handlers } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        username: { label: "Username", type: "text" },
-        password: { label: "Password", type: "password" },
-        remember: { label: "Remember", type: "checkbox" },
+        username: {},
+        password: {},
+        remember: {},
       },
 
       async authorize(credentials) {
-        if (!credentials) return null;
+        console.log("[authorize] start", credentials);
 
-        const username = String(credentials.username ?? "");
-        const password = String(credentials.password ?? "");
+        try {
+          if (!credentials) {
+            console.log("[authorize] no credentials");
+            return null;
+          }
 
-        // サーバー側バリデーション
-        if (username.length < 3 || password.length < 4) {
-          return null;
+          const username = String(credentials.username ?? "");
+          const password = String(credentials.password ?? "");
+
+          console.log("[authorize] username:", username);
+
+          // サーバー側バリデーション
+          if (username.length < 3 || password.length < 4) {
+            console.log("[authorize] validation failed");
+            return null;
+          }
+
+          console.log("[authorize] DB query start");
+
+          const user = db
+            .prepare("SELECT * FROM users WHERE username = ?")
+            .get(username);
+
+          console.log("[authorize] DB result:", user);
+
+          if (!user) {
+            console.log("[authorize] user not found");
+            return null;
+          }
+
+          if (user.password !== password) {
+            console.log("[authorize] password mismatch");
+            return null;
+          }
+
+          console.log("[authorize] success");
+
+          return {
+            id: String(user.id),
+            name: user.username,
+            remember:
+              credentials.remember === true || credentials.remember === "true",
+          };
+        } catch (err) {
+          console.error("[authorize][CRASH]", err);
+          throw err; // ← これが server configuration error の正体を出す
         }
-
-        // ✅ 固定ユーザー認証
-        if (username !== "test" || password !== "00000") {
-          return null;
-        }
-
-        return {
-          id: "1",
-          name: "test",
-          remember:
-            credentials.remember === true || credentials.remember === "true",
-        };
       },
     }),
   ],
