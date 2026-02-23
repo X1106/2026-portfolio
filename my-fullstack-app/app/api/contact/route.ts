@@ -30,8 +30,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // ドメイン未設定のテスト環境なら from は onboarding@resend.dev を使うのが無難
-    // （公式例にも onboarding@resend.dev が使われています）
     const fromName = process.env.CONTACT_FROM_NAME ?? "Contact Form";
     const from = `${fromName} <onboarding@resend.dev>`;
 
@@ -70,7 +68,6 @@ export async function POST(req: Request) {
       from,
       to: [to],
       subject,
-      // 返信しやすいように replyTo をユーザーのメールに
       replyTo: data.email,
       text,
       html,
@@ -82,7 +79,6 @@ export async function POST(req: Request) {
 
     return NextResponse.json({ ok: true, id: sent?.id });
   } catch (e: any) {
-    // zod parse error など
     return NextResponse.json(
       { ok: false, error: e?.message ?? "Unknown error" },
       { status: 400 }

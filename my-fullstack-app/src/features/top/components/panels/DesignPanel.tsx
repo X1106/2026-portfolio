@@ -29,7 +29,7 @@ const AboutSection = () => {
         sx={{
           maxWidth: 1440,
           mx: "auto",
-          height: "100svh", // 画面高に固定
+          height: "100svh",
           overflow: "hidden",
           p: { xs: 2.5, sm: 0 },
         }}
@@ -49,8 +49,8 @@ const AboutSection = () => {
               display: "flex",
               flexDirection: "column",
               justifyContent: { xs: "flex-start", sm: "center" },
-              alignItems: "center", // ✅ 子要素を左に寄せる
-              textAlign: "left", // ✅ 文字も左揃え
+              alignItems: "center",
+              textAlign: "left",
               minHeight: { xs: "58svh", sm: "auto" },
               pt: { xs: 2, sm: 0 },
             }}
@@ -89,7 +89,7 @@ const AboutSection = () => {
                   width: { xs: 180, md: 280 },
                   height: 2,
                   background: "linear-gradient(90deg, #e0c200, #5a50ff)",
-                  alignSelf: "flex-start", // 念のため（なくてもOK）
+                  alignSelf: "flex-start",
                   mb: { xs: 2, sm: 3 },
                 }}
               />
@@ -131,7 +131,7 @@ const AboutSection = () => {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 1,
-                    color: colors.text.link, // #0000EE
+                    color: colors.text.link,
                     fontWeight: 600,
                     "&:hover": { textDecoration: "underline" },
                   }}
@@ -154,8 +154,8 @@ const AboutSection = () => {
             sx={{
               flex: 1,
               display: "flex",
-              alignItems: { xs: "normal", sm: "center" }, // ✅ 常に左右中央
-              justifyContent: { xs: "center", sm: "normal" }, // ✅ SPは下寄せ、PCは中央
+              alignItems: { xs: "normal", sm: "center" },
+              justifyContent: { xs: "center", sm: "normal" },
               minHeight: { xs: "42svh", sm: "auto" },
             }}
           >

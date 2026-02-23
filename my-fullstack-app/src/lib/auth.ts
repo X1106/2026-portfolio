@@ -6,10 +6,8 @@ import db from "@/lib/db";
 export const { auth, handlers } = NextAuth({
   debug: true,
 
-  // ✅ 追加：middleware と同じ秘密鍵で JWT を作る/読む
   secret: process.env.AUTH_SECRET ?? process.env.NEXTAUTH_SECRET,
 
-  // ✅ 追加：Vercel Preview の可変ホストを信頼（これが効くことが多い）
   trustHost: true,
 
   logger: {

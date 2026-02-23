@@ -11,7 +11,7 @@ export default function ContactHero({
   subtitle: string;
 }) {
   const theme = useTheme();
-  const isPc = useMediaQuery(theme.breakpoints.up("md")); // ✅ 追加
+  const isPc = useMediaQuery(theme.breakpoints.up("md"));
 
   return (
     <Box sx={{ mb: { xs: 5, md: 6 }, maxWidth: "600px" }}>

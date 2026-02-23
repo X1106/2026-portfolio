@@ -17,9 +17,7 @@ const KEY = "contactDraft:v1";
 export function saveContactDraft(data: ContactFormData) {
   try {
     sessionStorage.setItem(KEY, JSON.stringify(data));
-  } catch {
-    // no-op
-  }
+  } catch {}
 }
 
 export function loadContactDraft(): ContactFormData | null {
@@ -35,7 +33,5 @@ export function loadContactDraft(): ContactFormData | null {
 export function clearContactDraft() {
   try {
     sessionStorage.removeItem(KEY);
-  } catch {
-    // no-op
-  }
+  } catch {}
 }

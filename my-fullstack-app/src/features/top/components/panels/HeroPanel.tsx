@@ -33,7 +33,7 @@ const HeroSection = () => {
           position: "absolute",
           inset: 0,
           zIndex: 0,
-          pointerEvents: "none", // ← UI操作を邪魔しない
+          pointerEvents: "none",
           "& canvas": {
             display: "block",
           },
@@ -47,10 +47,10 @@ const HeroSection = () => {
         maxWidth={false}
         sx={{
           position: "relative",
-          zIndex: 1, // ← 背景より前
+          zIndex: 1,
           maxWidth: 1440,
           mx: "auto",
-          height: "100svh", // 画面高に固定
+          height: "100svh",
           overflow: "hidden",
           px: { xs: 0, sm: 0 },
         }}

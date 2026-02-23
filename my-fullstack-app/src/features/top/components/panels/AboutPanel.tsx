@@ -18,13 +18,12 @@ const MuiLayoutSample = () => {
         zIndex: 0,
         bgcolor: colors.background.dark,
 
-        /* 右側背景（擬似要素） */
         "&::after": {
           content: '""',
           position: "absolute",
           top: 0,
           right: 0,
-          width: "100%", // SP
+          width: "100%",
           height: "100%",
           opacity: { xs: "0.2", sm: "0.4" },
           backgroundImage: 'url("/images/bg-img.svg")',
@@ -34,7 +33,6 @@ const MuiLayoutSample = () => {
           pointerEvents: "none",
           zIndex: -1,
 
-          /* sm以上 */
           "@media (min-width:600px)": {
             width: "48%",
           },
@@ -47,7 +45,7 @@ const MuiLayoutSample = () => {
           maxWidth: 1440,
           mx: "auto",
           position: "relative",
-          height: "100svh", // 画面高に固定
+          height: "100svh",
           overflow: "hidden",
           px: { xs: 2.5, sm: 0 },
         }}

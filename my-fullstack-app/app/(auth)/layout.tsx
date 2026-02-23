@@ -1,6 +1,13 @@
 // app/(auth)/layout.tsx
+import type { Metadata } from "next";
 import Footer from "@/components/layout/Footer/Footer";
 import { Box } from "@mui/material";
+export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function SiteLayout({
   children,
@@ -9,7 +16,6 @@ export default function SiteLayout({
 }) {
   return (
     <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
-      {/* ここを基準点にする */}
       <Box
         component="main"
         sx={{
@@ -19,19 +25,15 @@ export default function SiteLayout({
           flexDirection: "column",
         }}
       >
-        {/* コンテンツ本体 */}
         <Box sx={{ flexGrow: 1 }}>{children}</Box>
-
-        {/* フッターを最下部に固定して浮かせる */}
         <Box
           component="footer"
           sx={{
             width: "100%",
-            position: { xs: "static", md: "absolute" }, // スマホでは自然な流れ、PCでは浮かせると安全
+            position: { xs: "static", md: "absolute" },
             bottom: 0,
             py: 0,
             textAlign: "center",
-            // 背景を邪魔しないように透明にする
             bgcolor: "transparent",
           }}
         >

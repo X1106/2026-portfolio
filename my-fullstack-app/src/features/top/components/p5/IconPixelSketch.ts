@@ -8,7 +8,6 @@ export type IconPixelSketchOptions = {
   waitFrames?: number;
   bg?: number;
 
-  // ✅ 親要素サイズ取得（IconpixelBackground.tsx 側から渡す）
   getSize: () => { w: number; h: number };
 };
 
@@ -96,7 +95,7 @@ export const createIconPixelSketch =
 
     p.setup = () => {
       const { w, h } = opts.getSize();
-      p.createCanvas(w, h); // ✅ windowではなく親サイズ
+      p.createCanvas(w, h);
       p.noStroke();
       loadIcon(0);
     };
@@ -107,7 +106,6 @@ export const createIconPixelSketch =
       const gridW = icons[currentState][0].length * pixelSize;
       const gridH = icons[currentState].length * pixelSize;
 
-      // ✅ translate累積防止
       p.push();
       p.translate(p.width / 2 - gridW / 2, p.height / 2 - gridH / 2);
 
@@ -135,7 +133,6 @@ export const createIconPixelSketch =
 
     p.mousePressed = () => nextIcon();
 
-    // ✅ 親サイズが変わったら追従（呼び出し側のResizeObserverで呼ぶ）
     (p as any)._fitToParent = () => {
       const { w, h } = opts.getSize();
       p.resizeCanvas(w, h);

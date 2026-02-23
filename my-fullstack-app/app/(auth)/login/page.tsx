@@ -22,7 +22,6 @@ export default function LoginPage() {
         alignItems: "center",
         justifyContent: "center",
 
-        // 背景（中央に薄く）: 添付の雰囲気に合わせる :contentReference[oaicite:2]{index=2}
         backgroundImage: {
           xs: "none",
           md: 'url("/images/auth-background.svg")',
@@ -46,7 +45,7 @@ export default function LoginPage() {
             alignItems: "center",
           }}
         >
-          {/* ✅ PCのみ：左ビジュアル（SPは上バナーに寄せる） :contentReference[oaicite:3]{index=3} */}
+          {/* PCのみ：左ビジュアル（SPは上バナーに寄せる） :contentReference[oaicite:3]{index=3} */}
           <Box
             sx={{
               display: { xs: "none", md: "flex" },
@@ -113,7 +112,7 @@ export default function LoginPage() {
             }}
           >
             <Stack sx={{ width: "100%", maxWidth: 520 }} spacing={2}>
-              {/* ✅ SPのみ：上バナー（角丸・薄グレー） :contentReference[oaicite:4]{index=4} */}
+              {/* SPのみ：上バナー（角丸・薄グレー） :contentReference[oaicite:4]{index=4} */}
               <Paper
                 elevation={0}
                 sx={{
@@ -136,7 +135,7 @@ export default function LoginPage() {
                 </Stack>
               </Paper>
 
-              {/* ✅ ログインカード（影・角丸をデザイン寄せ） :contentReference[oaicite:5]{index=5} */}
+              {/* ログインカード（影・角丸をデザイン寄せ） :contentReference[oaicite:5]{index=5} */}
               <Paper
                 elevation={0}
                 sx={{
