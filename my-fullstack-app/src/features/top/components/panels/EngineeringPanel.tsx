@@ -122,7 +122,7 @@ const EngineeringSection = () => {
                 </AppButton>
                 <Link
                   component={NextLink}
-                  href="https://www.notion.so/7c305a8f2b52837ca182815aee207940?source=copy_link"
+                  href="https://www.notion.so/Notion-2fd05a8f2b5280e7aaf7c7981d76a36b?source=copy_link"
                   underline="none"
                   target="_blank"
                   sx={{
@@ -154,7 +154,7 @@ const EngineeringSection = () => {
               display: "flex",
 
               // ✅ 横位置
-              justifyContent: { xs: "center", md: "flex-start" },
+              justifyContent: { xs: "center", md: "center" },
 
               // ✅ 縦中央
               alignItems: "center",
