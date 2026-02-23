@@ -14,8 +14,8 @@ export default function Footer() {
         mt: "auto",
         py: 2,
         textAlign: "center",
-        backgroundColor: "transparent", // ✅ 透明
-        color: textColor, // ✅ 動的
+        backgroundColor: "transparent",
+        color: textColor,
       }}
     >
       <Typography variant="body2">

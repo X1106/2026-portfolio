@@ -152,11 +152,10 @@ export default function Header() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            px: { xs: 0, sm: 4 }, // ✅ SPは余白を減らす（お好みで）
+            px: { xs: 0, sm: 4 },
             py: 1.4,
             borderRadius: 999,
 
-            // ✅ SPは横長ぼかしをやめる（透明）
             backgroundColor: {
               xs: "transparent",
               sm: "rgba(255,255,255,0.45)",
@@ -172,7 +171,7 @@ export default function Header() {
             component={Link}
             href="/"
             sx={{
-              display: { xs: "none", sm: "inline-flex" }, // ←ここがポイント
+              display: { xs: "none", sm: "inline-flex" },
               color: ink,
               textDecoration: "none",
               fontWeight: 500,
@@ -238,7 +237,6 @@ export default function Header() {
             </IconButton>
           </Box>
 
-          {/* ✅ SP ハンバーガー：後ろだけ丸いぼかし */}
           <Box
             sx={{
               display: { xs: "inline-flex", sm: "none" },

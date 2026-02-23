@@ -9,7 +9,6 @@ import AppButton from "@/components/ui/AppButton";
 import { colors } from "@/theme/colors";
 import { typographyPresets } from "@/theme/typography";
 
-// ✅ p5背景
 const IconPixelBackground = dynamic(() => import("../p5/IconpixelBackground"), {
   ssr: false,
 });
@@ -27,7 +26,6 @@ const EngineeringSection = () => {
           mx: "auto",
           minHeight: "100svh",
           p: { xs: 2.5, sm: 0 },
-          // overflow: "hidden", // ← 画面外を切りたいならON（ただし影も切れる）
         }}
       >
         <Box
@@ -129,7 +127,7 @@ const EngineeringSection = () => {
                     display: "inline-flex",
                     alignItems: "center",
                     gap: 1,
-                    color: colors.text.link, // #0000EE
+                    color: colors.text.link,
                     fontWeight: 600,
                     "&:hover": { textDecoration: "underline" },
                   }}
@@ -153,10 +151,8 @@ const EngineeringSection = () => {
               flex: 1,
               display: "flex",
 
-              // ✅ 横位置
               justifyContent: { xs: "center", md: "center" },
 
-              // ✅ 縦中央
               alignItems: "center",
 
               p: { xs: 0, sm: 0 },

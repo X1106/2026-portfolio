@@ -16,7 +16,7 @@ export default function WithHeaderLayout({
           top: 0,
           left: 0,
           right: 0,
-          zIndex: 1200, // ✅ 関数NG → 数値で固定
+          zIndex: 1200,
           width: "100%",
         }}
       >
@@ -33,7 +33,7 @@ export default function WithHeaderLayout({
           bottom: 0,
           left: 0,
           right: 0,
-          zIndex: 1200, // ✅ 関数NG → 数値で固定
+          zIndex: 1200,
           width: "100%",
         }}
       >

@@ -67,7 +67,6 @@ export default function HeroBackground() {
     // p5 インスタンス生成
     const instance = new p5(sketch, hostRef.current);
 
-    // ✅ unmount 時に必ず破棄
     return () => {
       instance.remove();
     };

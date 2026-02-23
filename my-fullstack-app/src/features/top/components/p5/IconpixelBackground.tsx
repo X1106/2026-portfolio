@@ -7,10 +7,8 @@ import { createIconPixelSketch } from "./IconPixelSketch";
 type Props = {
   pixelSize?: number;
 
-  /** ✅ 追加：PC/SPでピクセルサイズを変えたい場合に使用（任意） */
   pixelSizePc?: number;
   pixelSizeSp?: number;
-  /** ✅ 追加：PC判定ブレイクポイント（px） */
   pcMinWidth?: number;
 
   revealEvery?: number;
@@ -31,7 +29,6 @@ export default function IconPixelBackground({
   const hostRef = useRef<HTMLDivElement | null>(null);
   const instanceRef = useRef<p5 | null>(null);
 
-  // ✅ MUIに依存せずにPC/SP判定（必要ないなら pixelSizePc/Sp を渡さなくてOK）
   const [isPc, setIsPc] = useState(false);
   useEffect(() => {
     const mq = window.matchMedia(`(min-width:${pcMinWidth}px)`);
@@ -63,13 +60,11 @@ export default function IconPixelBackground({
       return { w, h };
     };
 
-    // ✅ 既存があれば破棄
     if (instanceRef.current) {
       instanceRef.current.remove();
       instanceRef.current = null;
     }
 
-    // ✅ 親がまだレイアウト確定してない(=0px)瞬間があるので、1フレーム遅らせて初期化
     let raf = 0;
 
     const mount = () => {
@@ -86,7 +81,6 @@ export default function IconPixelBackground({
 
       instanceRef.current = instance;
 
-      // ✅ “必ず” 親サイズへフィット（_fitToParent が無い場合でも効く）
       const fitToParent = () => {
         const inst = instanceRef.current;
         if (!inst) return;
@@ -114,7 +108,6 @@ export default function IconPixelBackground({
       // 初回フィット（重要）
       fitToParent();
 
-      // ✅ 親サイズ変化に追従
       const ro = new ResizeObserver(() => fitToParent());
       ro.observe(host);
 
@@ -156,8 +149,6 @@ export default function IconPixelBackground({
       style={{
         width: "100%",
         height: "100%",
-        // ✅ hostが潰れて0pxになるのを防ぎたい場合は minHeight を入れてもOK
-        // minHeight: 1,
       }}
     />
   );

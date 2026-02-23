@@ -82,7 +82,6 @@ export default function AnimatedUpText({
                     animation: `${upFromBottom} ${durationSec}s cubic-bezier(0.2, 0.8, 0.2, 1) both`,
                     animationDelay: `${i * staggerSec}s`,
                   }),
-                  // 空白の幅を保つ
                   width: isSpace ? "0.33em" : "auto",
                 }}
               >

@@ -54,6 +54,5 @@ export async function saveDraftAction(
     maxAge: 60 * 30,
   });
 
-  // ✅ 成功したらサーバー側で確実に遷移
   redirect("/contact/confirm");
 }

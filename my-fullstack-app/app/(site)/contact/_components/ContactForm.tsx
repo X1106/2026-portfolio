@@ -162,7 +162,7 @@ export default function ContactForm() {
             <FieldRow label="お問い合わせ種別" required>
               <Box
                 sx={{
-                  width: { xs: "100%", sm: "50%" }, // ✅ SPは100%、PCは約50%
+                  width: { xs: "100%", sm: "50%" },
                 }}
               >
                 <TextField
@@ -204,7 +204,7 @@ export default function ContactForm() {
                 value={data.gender}
                 onChange={(e) => update("gender", e.target.value as any)}
                 sx={{
-                  flexDirection: { xs: "column", sm: "row" }, // ✅ SP=縦 / PC=横
+                  flexDirection: { xs: "column", sm: "row" },
                   alignItems: { xs: "flex-start", sm: "center" },
                   gap: 2,
                 }}
@@ -262,9 +262,9 @@ export default function ContactForm() {
               <Typography
                 sx={{
                   fontSize: { xs: 14, md: 14 },
-                  fontWeight: 400, // fw.regular 相当（もし fw.regular があるなら置き換えOK）
-                  lineHeight: 1.3, // lhTight 相当（もし lhTight があるなら置き換えOK）
-                  letterSpacing: "0.15em", // 15% → 0.15em（CSSは%指定できないので em に変換）
+                  fontWeight: 400,
+                  lineHeight: 1.3,
+                  letterSpacing: "0.15em",
                   color: "#212121",
                 }}
               >

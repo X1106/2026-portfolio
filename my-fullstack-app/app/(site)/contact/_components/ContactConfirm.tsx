@@ -132,7 +132,6 @@ export default function ContactConfirm() {
            Left: confirm (63%)
         ========================= */}
         <Box component="section" sx={{ width: { xs: "100%", sm: "69%" } }}>
-          {/* ✅ ContactForm と同じ：Hero は左カラム内の先頭 */}
           <ContactHero title="CONTACT" subtitle={heroSubtitle} />
 
           <Paper

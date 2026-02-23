@@ -25,23 +25,3 @@ export default function RootLayout({
     </html>
   );
 }
-
-// import Providers from "@/components/Providers";
-// import Header from "@/components/layout/Header/Header";
-
-// export default function RootLayout({
-//   children,
-// }: {
-//   children: React.ReactNode;
-// }) {
-//   return (
-//     <html lang="ja">
-//       <body>
-//         <Providers>
-//           <Header />
-//           {children}
-//         </Providers>
-//       </body>
-//     </html>
-//   );
-// }
