@@ -113,7 +113,7 @@ const MuiLayoutSample = () => {
             <AppButton
               tone="secondaryWhite"
               component="a"
-              href="https://www.notion.so/7c305a8f2b52837ca182815aee207940?source=copy_link"
+              href="https://www.notion.so/Notion-2fd05a8f2b5280e7aaf7c7981d76a36b?source=copy_link"
               target="_blank"
               rel="noopener noreferrer"
             >
